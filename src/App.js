@@ -1,7 +1,6 @@
 import React from "react";
-import Expenses from "./components/Expenses";
-import "./components/Expenses.css";
-// import Card from "./components/Card";
+import Expenses from "./components/Expenses/Expenses";
+import "./components/Expenses/Expenses.css";
 
 function App() {
   const expenses = [
