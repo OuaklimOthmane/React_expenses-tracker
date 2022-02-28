@@ -1,5 +1,7 @@
+import React from "react";
 import Expenses from "./components/Expenses";
 import "./components/Expenses.css";
+// import Card from "./components/Card";
 
 function App() {
   const expenses = [
@@ -27,11 +29,21 @@ function App() {
   return (
     <div>
       <h2>Let's get started!</h2>
-      <div className="expenses">
-        <Expenses items={expenses} />
-      </div>
+      <Expenses items={expenses} />
     </div>
   );
+
+  //? We recommend using JSX to describe what your UI should looks like. Each JSX element is just syntactic sugar for calling React.createElement(). You will not typically invoke the following methods directly if you are using JSX.
+  //? React.createElement(component, props, ...children) = React.createElement(component,  {attributeKey : attributeValue}, content)
+  //? It should also be clear why you need some wrapping element as a root JSX element. because in "createElement()" world, you always create one element which then may have more child elements.
+  //? below we describe how we can build components without JSX :
+
+  // return React.createElement(
+  //   "div",
+  //   {},
+  //   React.createElement("h1", {}, "Let\'s get started!"),
+  //   React.createElement(Expenses, { items: expenses })
+  // );
 }
 
 export default App;
