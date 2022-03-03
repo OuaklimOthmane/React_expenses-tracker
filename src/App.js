@@ -26,9 +26,17 @@ function App() {
     },
   ];
 
+  const addExpense = function (enteredExpense) {
+    const expense = {
+      ...enteredExpense,
+    };
+    console.log("In App :");
+    console.log(expense);
+  };
+
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpense} />
       <Expenses items={expenses} />
     </div>
   );
