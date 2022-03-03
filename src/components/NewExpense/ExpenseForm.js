@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = function () {
+  //* Appproch "1" :
   //   const [enteredTitle, setEnteredTitle] = useState("");
   //   const [enteredAmount, setEnteredAmount] = useState("");
   //   const [enteredDate, setEnteredDate] = useState("");
 
+  //* Approch "2","3" :
   const [userInput, setUserInput] = useState({
     enteredTitle: "",
     enteredAmount: "",
@@ -13,10 +15,18 @@ const ExpenseForm = function () {
   });
 
   const titleChangeHandler = (event) => {
+    //* Approch 1 :
     // setEnteredTitle(event.target.value);
-    setUserInput({
-      ...userInput,
-      enteredTitle: event.target.value,
+
+    //* Approch 2 :
+    // setUserInput({
+    //   ...userInput,
+    //   enteredTitle: event.target.value,
+    // });
+
+    //* Approch 3 :
+    setUserInput((prevState) => {
+      return { ...prevState, enteredTitle: event.target.value };
     });
   };
 
@@ -70,3 +80,6 @@ const ExpenseForm = function () {
 };
 
 export default ExpenseForm;
+
+//! Now why should we should apply the approch "3" instead of "2" ??
+//? In many cases, both will work fine,but keep in mind that Reacts schedules state updates,it doesn't perform them instantly. And therefore, theoretically, if you schedule a lot of state updates at the same time, you could be depending on an outdated or incorrect state snapshot if you use the approach "2".If you use this approach "3", React will guarantee that the state snapshot it gives you in this inner function, will always be the latest state snapshot, keeping all scheduled state updates in mind. So this is the safer way to ensure that you always operate on the latest state snapshot.So you should use the function syntax whenever your state update depends on the previous state.That is something you should memorize.If your state update depends on the previous state,use this function form.
