@@ -15,8 +15,8 @@
 .new-expense__control input {
   font: inherit;
   padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  border-radius: 4px;
+  border: 1px solid #b68973;
   width: 20rem;
   max-width: 100%;
 }
